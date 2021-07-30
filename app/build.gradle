@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.stalwart.foodhunters"
-        minSdk 19
+        minSdk 21
         targetSdk 30
         versionCode 1
         versionName "1.0"
@@ -29,11 +29,42 @@ android {
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8
     }
+
+    composeOptions {
+        def kotlin_compiler_extension_version = "1.0.0-rc02"
+        kotlinCompilerExtensionVersion kotlin_compiler_extension_version
+    }
+
+    buildFeatures {
+        // Enables Jetpack Compose for this module
+        compose true
+    }
 }
 
 dependencies {
+
     implementation 'androidx.core:core-ktx:1.6.0'
-    implementation 'androidx.appcompat:appcompat:1.3.1'
-    implementation 'com.google.android.material:material:1.4.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+
+    def app_compat = "1.3.1"
+    implementation "androidx.appcompat:appcompat:$app_compat"
+
+    def material = "1.4.0"
+    implementation "com.google.android.material:material:$material"
+
+    def constraint_layout = "2.0.4"
+    implementation "androidx.constraintlayout:constraintlayout:$constraint_layout"
+
+    def androidx_ui = "1.0.0-alpha07"
+    implementation "androidx.ui:ui-tooling:$androidx_ui"
+
+    def compose = "1.0.0"
+    implementation "androidx.compose.ui:ui:$compose"
+    implementation "androidx.compose.foundation:foundation:$compose"
+    implementation "androidx.compose.runtime:runtime-livedata:$compose"
+    implementation "androidx.compose.runtime:runtime-rxjava2:$compose"
+    implementation "androidx.compose.material:material:$compose"
+    implementation "androidx.compose.material:material-icons-core:$compose"
+    implementation "androidx.compose.material:material-icons-extended:$compose"
+    implementation "androidx.compose.ui:ui-tooling:$compose"
+    implementation "androidx.activity:activity-compose:1.3.0"
 }
